@@ -1,0 +1,7 @@
+{
+  "name": "the-right-way",
+  "dependencies": {
+    "shower-core": "~2.0.8",
+    "shower-ribbon": "~2.0.10"
+  }
+}
