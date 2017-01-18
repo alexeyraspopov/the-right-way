@@ -15,6 +15,10 @@
   font-size: 100px !important;
   padding: 0px 10vw;
 }
+.slide pre code {
+  font-family: FiraCode, Consolas, monospace;
+  line-height: 1.7;
+}
 .slide h2 code {
   padding: 0;
   background: none;
