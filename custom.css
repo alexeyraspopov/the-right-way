@@ -1,0 +1,43 @@
+.slide::after {
+  top: 85%;
+  width: auto;
+  background: none;
+  color: rgba(0, 0, 0, 0.3);
+}
+.slide {
+  padding: 80px 100px 0;
+}
+.slide h2 {
+  color: rgba(0, 0, 0, 0.87);
+}
+.slide .shout {
+  font-family: PT Serif, Georgia, serif;
+  font-size: 100px !important;
+  padding: 0px 10vw;
+}
+.slide h2 code {
+  padding: 0;
+  background: none;
+}
+.slide .primary-accent {
+  color: #303f9f;
+}
+.slide .secondary-accent {
+  color: #c2185b;
+}
+.slide .shout + .bro,
+.slide .shout + .notbro {
+  position: absolute;
+  text-transform: uppercase;
+  border: 12px solid;
+  font-size: 90px;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 0 37px;
+  line-height: 100px;
+  transform: rotate(-20deg);
+  top: 50%;
+  right: 20%;
+}
+.slide .shout + .bro { color: green; }
+.slide .shout + .notbro { color: red; }
