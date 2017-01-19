@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>В этот раз я все сделаю правильно!</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+	<link rel="stylesheet" href="custom.css">
+</head>
+<body class="shower list">
+	<header class="caption">
+		<h1>В этот раз я все сделаю правильно!</h1>
+		<p><a href="https://twitter.com/alexeyraspopov">Алексей Распопов</a>, <a href="https://datarobot.com">DataRobot</a>.</p>
+	</header>
+
+	<section class="slide">
+	  <h2 class="shout">В этот раз я все сделаю <em class="primary-accent">правильно</em>!</h2>
+	</section>
+
+  <section class="slide">
+    <img src="https://i.stack.imgur.com/C4SNN.jpg"
+      alt="This time I'll build things the right way"
+      class="cover w">
+  </section>
+
+  <section class="slide">
+    <h2><code>whoami</code></h2>
+    <ul>
+      <li>5+ лет страдаю от JavaScript Fatigue</li>
+      <li>Делаю всякие штуки в <a href="https://datarobot.com">DataRobot</a>, чаще — фронтенд</li>
+      <li>Немного делаю open source</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>О проекте</h2>
+    <ul>
+      <li>Одностраничное приложение с небольшим бэкендом на Python</li>
+      <li>Нет авторизации, использует API DataRobot'а</li>
+      <li>Хранит пользовательский ввод в браузерном хранилище</li>
+      <li>Анимации, графики, быстрый отзыв</li>
+      <li>UX в самом высоком приоритете — и это касается каждой детали</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Зачем страдать?</h2>
+    <ul>
+      <li class="next">Эффект Даннинга — Крюгера 😓</li>
+      <li class="next">Вера в лучшее</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Требования</h2>
+    <ul>
+      <li>Хорошие <em class="primary-accent">инструменты</em> — присутствие которых <em class="secondary-accent">не замечаешь</em>, но работать становится проще</li>
+      <li class="next">Я не хочу каждый раз лезть в документацию чтобы прочитать о необходимых параметрах/структурах (привет, Angular)</li>
+      <li class="next">Длина цепочек связей между компонентами/слоями должна быть минимальной, для простоты откладки и рефакторинга</li>
+      <li class="next">Когнитивная нагрузка должна быть минимальна при взаимодействии с любыми конструкциями</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">React/JSX</h2>
+    <p class="bro next">bro</p>
+  </section>
+
+  <section class="slide">
+    <h2>JSX</h2>
+    <p>Универсальный язык разметки компонентов, совместим с разными реализациями при этом не требуя изменений.</p>
+    <p class="next">Легко читается и пишется, так как представляет собой смесь давно знакомых вещей.</p>
+    <p class="next">Не прячет ошибки и не дает возможности делать что-то неявно.</p>
+  </section>
+
+  <section class="slide">
+    <pre>
+      <code>{collection.map(item => (</code>
+      <code>  &lt;ItemView key={item.id} item={item} /&gt;</code>
+      <code>))}</code>
+    </pre>
+    <pre class="next">
+      <code>&lt;item-view *ngFor="let item of collection" [item]="item"&gt;</code>
+      <code>&lt;/item-view&gt;</code>
+    </pre>
+    <pre class="next">
+      <code>{{#each item in collection}}</code>
+      <code>  {{item-view item=item}}</code>
+      <code>{{/each}}</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2></h2>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">Статическая типизация</h2>
+    <p class="bro next">bro</p>
+  </section>
+
+  <section class="slide">
+    <h2>Типизация</h2>
+    <ul>
+      <li>Помогает избежать глупых ошибок и бъет по рукам за глупые костыли</li>
+      <li class="next">Спустя время, служит документацией о контрактах в проекте</li>
+      <li class="next">Уменьшает количество боли от использования dict'ов в качестве аргументов</li>
+    </ul>
+    <p class="next">Использовал исключительно для уровня доступа к данным и бизнес логике</p>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">Flow</h2>
+    <p class="notbro next">not bro</p>
+  </section>
+
+  <section class="slide">
+    <h2>Flow</h2>
+    <ul>
+      <li>Ужасная конфигурация и отсутствие её документации 😨</li>
+      <li class="next">Некоторые фичи могут просто не работать 😱</li>
+      <li class="next">Пришлось хранить описание типов для сторонних библиотек прямо в проекте 😡</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">Immutable JS</h2>
+    <p class="bro next">bro</p>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">Flux</h2>
+    <p class="bro next">bro</p>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">Data Access Object</h2>
+    <p class="bro next">bro</p>
+  </section>
+
+  <section class="slide">
+    <pre>
+      <code>class Resources {</code>
+      <code>  async create(model)</code>
+      <code>  async retrieve(criterias)</code>
+      <code>  async update(id, model)</code>
+      <code>  async destroy(id)</code>
+      <code>}</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <pre class="next">
+      <code>type ResourceModel = { id: string, ... };</code>
+      <code>const defaults: ResourceModel = { id: '', ... };</code>
+      <code>class Resource extends Record(defaults) { ... }</code>
+    </pre>
+    <pre class="next">
+      <code>class Resource extends Record(defaults) {</code>
+      <code>  constructor(data: ResourceModel) { super(data); }</code>
+      <code>}</code>
+    </pre>
+    <pre class="next">
+      <code>const resource = new Resource({ id: shortid.generate(),</code>
+      <code>                                ... });</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">React Transmit</h2>
+    <p class="notbro next">not bro</p>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">LocalForage</h2>
+    <p class="bro next">bro</p>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">PostCSS + CSS Modules</h2>
+    <p class="bro next">bro</p>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">React + D3 + React Motion ❤️</h2>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">Docker</h2>
+    <p class="bro next">bro</p>
+  </section>
+
+  <section class="slide">
+    <h2>Docker</h2>
+    <ul>
+      <li>Простой способ собрать необходимое окружение и воссоздать его когда угодно</li>
+      <li class="next"><em class="primary-accent">Compose</em> позволяет описать окружение для работы с несколькими компонентами и запускать всю систему единой командой</li>
+      <li class="next">Упрощает деплой компонентов</li>
+    </ul>
+    <ul>
+      <li class="next">Требовательный к ресурсам 😓</li>
+      <li class="next"></li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">Python ❤️</h2>
+  </section>
+
+  <section class="slide">
+    <h2>Python tool set</h2>
+    <ul>
+      <li>aiohttp — библиотека для работы с HTTP (клиент/сервер)</li>
+      <li>trafaret — валидация структур данных</li>
+      <li>injections — внедрение зависимостей</li>
+      <li>motor — асинхронный драйвер для MongoDB</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Data Access Object — доступ к данным</h2>
+    <pre>
+      <code>class Resources():</code>
+      <code>  async def create(model)</code>
+      <code>  async def retrieve(criterias)</code>
+      <code>  async def update(id, model)</code>
+      <code>  async def destroy(id)</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Data Access Object — обработка запросов</h2>
+    <pre>
+      <code>class ResourcesView(View):</code>
+      <code>  async def post()</code>
+      <code>  async def get()</code>
+      <code>  async def patch()</code>
+      <code>  async def delete()</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout"><span class="primary-accent">Async</span>/<span class="secondary-accent">Await</span></h2>
+    <p class="bro next">bro</p>
+  </section>
+
+  <!--
+    * Dispatcher — bro, Flux way — need async support, dataloader — bro
+    * Typed actions — bro
+  -->
+
+  <section class="slide">
+	  <h2 class="shout">Спасибо за внимание</h2>
+	</section>
+
+	<script src="node_modules/shower-core/shower.min.js"></script>
+	<script src="highlight.js"></script>
+</body>
+</html>
