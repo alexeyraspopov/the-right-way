@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 	<link href="node_modules/shower-ribbon/styles/screen-16x10.css" rel="stylesheet">
+  <link href="fonts.css" rel="stylesheet">
 	<link href="custom.css" rel="stylesheet">
 </head>
 <body class="shower list">
@@ -93,15 +94,6 @@
   </section>
 
   <section class="slide">
-    <h2></h2>
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  </section>
-
-  <section class="slide">
     <h2 class="shout">Статическая типизация</h2>
     <p class="bro next">bro</p>
   </section>
@@ -136,23 +128,22 @@
   </section>
 
   <section class="slide">
-    <h2 class="shout">Flux</h2>
-    <p class="bro next">bro</p>
+    <h2>Immutable JS</h2>
+    <ul>
+      <li>Вся эффективность неизменяемых структур данных</li>
+      <li>Аутентичное API</li>
+      <li>Очевидные организация и результаты</li>
+    </ul>
   </section>
 
   <section class="slide">
-    <h2 class="shout">Data Access Object</h2>
-    <p class="bro next">bro</p>
-  </section>
-
-  <section class="slide">
+    <h2>Легкие операции в Immutable JS</h2>
     <pre>
-      <code>class Resources {</code>
-      <code>  async create(model)</code>
-      <code>  async retrieve(criterias)</code>
-      <code>  async update(id, model)</code>
-      <code>  async destroy(id)</code>
-      <code>}</code>
+      <code>case MessageActionTypes.MESSAGE_CREATED:</code>
+      <code>  return threads.mergeIn([action.message.threadId], {</code>
+      <code>    lastMessage: action.message.text,</code>
+      <code>    timestamp: action.message.timestamp,</code>
+      <code>  });</code>
     </pre>
   </section>
 
@@ -174,8 +165,108 @@
   </section>
 
   <section class="slide">
+    <h2 class="shout">Data Access Object</h2>
+    <p class="bro next">bro</p>
+  </section>
+
+  <section class="slide">
+    <pre>
+      <code>class Resources {</code>
+      <code>  async create(model)</code>
+      <code>  async retrieve(criterias)</code>
+      <code>  async update(id, model)</code>
+      <code>  async destroy(id)</code>
+      <code>}</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Data Access Object</h2>
+    <ul>
+      <li>Скрывает детали реализации хранилища</li>
+      <li>Общий интерфейс для всех коллекций</li>
+    </ul>
+    <ul>
+      <li class="next">Только асинхронные операции</li>
+      <li class="next">Только иммутабельные данные</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout">Flux</h2>
+    <p class="bro next">bro</p>
+  </section>
+
+  <section class="slide">
+    <h2>Flux — что хорошего</h2>
+    <ul>
+      <li>Я просто привык к такой организации потока данных</li>
+      <li>Максимальное разделение операций с данными и их представлением</li>
+      <li>Очень легко рефакторить и мокать</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Flux + типизация</h2>
+    <pre>
+      <code>class PredResponse extends Action<{ datarow: DataRow,</code>
+      <code>                                    results: Prediction }> {}</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Flux — что плохого</h2>
+    <ul>
+      <li>Только синхронная загрузка</li>
+      <li>Исключительно для &laquo;кеширования&raquo;</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <pre>
+      <code>export default class Actor {</code>
+      <code>  constructor(dispatcher) {</code>
+      <code>    this.dispatcher = dispatcher;</code>
+      <code>    this.dispatchToken = this.dispatcher.register((message) => {</code>
+      <code>      this.receive(message);</code>
+      <code>    });</code>
+      <code>  }</code>
+      <code>  disable() {</code>
+      <code>    this.dispatcher.unregister(this.dispatchToken);</code>
+      <code>  }</code>
+      <code>}</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <pre>
+      <code>class PredictionQueue extends Actor {</code>
+      <code>  constructor(dispatcher) {</code>
+      <code>    super(dispatcher);</code>
+      <code>    this.predictions = new Predictions();</code>
+      <code>  }</code>
+      <code>  async <mark>receive</mark>(message) {</code>
+      <code>    switch (message.constructor) {</code>
+      <code>    case SyncDataRow:</code>
+      <code>      <span class="comment">// ...</span></code>
+      <code>    }</code>
+      <code>  }</code>
+      <code>}</code>
+    </pre>
+  </section>
+
+  <section class="slide">
     <h2 class="shout">React Transmit</h2>
     <p class="notbro next">not bro</p>
+  </section>
+
+  <section class="slide">
+    <h2>Transmit</h2>
+    <ul>
+      <li>Нет возможности обрабатывать ошибки или показывать статус загрузки</li>
+      <li class="next">Сложно обновлять состояние компонента, если нет нужного промиса (не к чему привязать вызов <code>forceUpdate()</code>)</li>
+      <li class="next">Плохо интегрируется с Flux</li>
+    </ul>
   </section>
 
   <section class="slide">
@@ -184,12 +275,58 @@
   </section>
 
   <section class="slide">
+    <h2>LocalForage</h2>
+    <ul>
+      <li>Автоматически выбирает доступное хранилище: IndexedDB, Local Storage</li>
+      <li>Асинхронный интерфейс</li>
+      <li>Предлагает доступ и версионирование отдельных инстансов</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>LocalForage</h2>
+    <pre>
+      <code>import Storage from 'localforage';</code>
+      <code>export default Storage.createInstance({</code>
+      <code>  name: 'prediction-optimization-ux/reasons',</code>
+      <code>  version: 1,</code>
+      <code>});</code>
+    </pre>
+
+    <pre class="next">
+      <code>await Reasons.setItem(id, reason);</code>
+    </pre>
+  </section>
+
+  <section class="slide">
     <h2 class="shout">PostCSS + CSS Modules</h2>
     <p class="bro next">bro</p>
   </section>
 
   <section class="slide">
+    <h2>CSS Modules</h2>
+    <ul>
+      <li>Семантические имена все еще важны</li>
+      <li>Храню стили рядом с компонентами</li>
+    </ul>
+
+    <pre class="next">
+      <code>/PredictionInsight.react.js</code>
+      <code>/PredictionInsight.style.css</code>
+    </pre>
+  </section>
+
+  <section class="slide">
     <h2 class="shout">React + D3 + React Motion ❤️</h2>
+  </section>
+
+  <section class="slide">
+    <h2>❤️</h2>
+    <ul>
+      <li>Исключительно декларативная модель</li>
+      <li>WYSIWYG😏</li>
+      <li>Намного проще для понимания, в сравнении с кишками селекторов D3</li>
+    </ul>
   </section>
 
   <section class="slide">
@@ -206,7 +343,6 @@
     </ul>
     <ul>
       <li class="next">Требовательный к ресурсам 😓</li>
-      <li class="next"></li>
     </ul>
   </section>
 
@@ -249,6 +385,15 @@
   <section class="slide">
     <h2 class="shout"><span class="primary-accent">Async</span>/<span class="secondary-accent">Await</span></h2>
     <p class="bro next">bro</p>
+  </section>
+
+  <section class="slide">
+    <h2>Async/await</h2>
+    <ul>
+      <li>Простая модель</li>
+      <li>Возможность использовать стандартные языковые структуры</li>
+      <li>Меньше шума в коде</li>
+    </ul>
   </section>
 
   <!--

@@ -3,7 +3,7 @@ const codeSnippets = document.querySelectorAll('pre');
 const whiteListIdentifiers = ['getInitialState', 'reduce', 'getStores', 'calculateState', 'get',
                               'json', 'create', 'retrieve', 'update', 'destroy', 'render',
                               'Dispatcher', 'Store', 'constructor', 'super', 'map', 'post',
-                              'patch', 'delete'];
+                              'patch', 'delete', 'name', 'version'];
 const reservedWords = ['class', 'extends', 'return', 'throw', 'new', 'function', 'async', 'await',
                        'for', 'if', 'of', 'switch', 'case', 'default', 'this', 'const', 'let',
                        'var', 'true', 'false', 'try', 'catch', 'finally', 'static', 'import',
